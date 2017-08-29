@@ -1,0 +1,27 @@
+extends layout
+
+block header
+
+block content
+    div.container
+        div(class="col-sm-6 col-sm-offset-3")
+            h1 <span class="fa fa-sign-in"></span> Login
+            
+            // show any messages that come back with authentication
+            if (message.length > 0)
+                div.alert.alert-danger= message
+
+            // LOGIN FORM
+            form(action="/auth/login", method="post")
+                div.form-group
+                    label Email
+                    input.form-control(type='text', name='email')
+                div.form-group
+                    label Password
+                    input.form-control(type='password', name='password')
+                button.btn.btn-warning.btn-lg(type=submit) Login
+            
+            hr
+            
+            p Need an account? <a href="/auth/signup">Signup</a>
+            p Or go to <a href="/">home</a>.
