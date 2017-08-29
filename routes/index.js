@@ -16,37 +16,37 @@ router.get('/calendar', isLoggedIn, function(req, res, next) {
 });
 
 /* GET init data in calendar */
-// router.get('/calendar/init', isLoggedIn, function(req, res){
-//   Event.collection.insert([
-//     {
-//       user_email: req.user.local.email,
-//       text: "My test event A",
-//       start_date: new Date(2017,8,1),
-//       end_date:   new Date(2017,8,5)
-//     },
-//     {
-//       user_email: "userB@email.com",
-//       text: "My test event A",
-//       start_date: new Date(2017,8,1),
-//       end_date:   new Date(2017,8,5)
-//     },
-//     {
-//       user_email: req.user.local.email,
-//       text:"One more test event",
-//       start_date: new Date(2017,8,3),
-//       end_date:   new Date(2017,8,8),
-//       color: "#DD8616"
-//     }
-//   ], function(err, docs){
-//     if (err) {
-//       throw err;
-//     } else {
-//       console.info('%d events were successfully stored.', docs.length);
-//     }
-//   });
+router.get('/calendar/init', isLoggedIn, function(req, res){
+  Event.collection.insert([
+    {
+      user_email: "userB@email.com",
+      text: "My test event A",
+      start_date: new Date(2017,8,1),
+      end_date:   new Date(2017,8,5)
+    },
+    {
+      user_email: "userB@email.com",
+      text: "My test event A",
+      start_date: new Date(2017,8,1),
+      end_date:   new Date(2017,8,5)
+    },
+    {
+      user_email: "userA@email.com",
+      text:"One more test event",
+      start_date: new Date(2017,8,3),
+      end_date:   new Date(2017,8,8),
+      color: "#DD8616"
+    }
+  ], function(err, docs){
+    if (err) {
+      throw err;
+    } else {
+      console.info('%d events were successfully stored.', docs.length);
+    }
+  });
 
-//   res.send("Test events were added to the database")
-// });
+  res.send("Test events were added to the database")
+});
 
 /* GET data to calendar */
 router.get('/calendar/data', isLoggedIn, function(req, res){
